@@ -3,6 +3,7 @@ class CreateGenres < ActiveRecord::Migration[5.0]
     create_table :genres do |t|
       t.integer :category_id
       t.text :name
+      t.text :keyword
       t.integer :sort
 
       t.timestamps
