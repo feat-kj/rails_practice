@@ -15,7 +15,7 @@ $ rbenv --global 2.3.0
 - bundlerで管理するようにする。他の環境に影響を与えないように
   project内に Rails をinstall
 ```
-$ bundle install-  -path vendor/bundle
+$ bundle install --path vendor/bundle
 ```  
 * Configuration
 
