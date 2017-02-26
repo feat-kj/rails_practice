@@ -1,0 +1,21 @@
+<h1>User#index</h1>
+<p>Find me in app/views/user/index.html.erb</p>
+<%= form_for @user, :url => {:action => :confirm} do |f| %>
+<ul>
+<li><%= f.label :name %>：<%= f.text_field(:name) %></li>
+<li><%= f.label :gender %>:男:<%= f.radio_button(:gender, 1) %>
+        女:<%= f.radio_button(:gender, 2) %>
+</li>
+<li>住所:<%= f.collection_select(:prefecture_id, @prefectures, :id, :name) %></li>
+<li>プロフィール:<%= f.text_area(:profile, :size => "10x10") %></li>
+</ul>
+
+<% @categories.each do |c| %>
+  <%= c.name %> :----:
+  <%= collection_check_boxes(:user_genres, :genre_id, c.genres.each, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+  <% end %>
+  <br/>
+<% end %>
+<%= f.submit "送信する", data: { disable_with: "送信中..." } %>
+<% end %>
