@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :name,:profile, :prefecture_id, :gender, presence: true
 
+  #has_one :user_auths
+
 end

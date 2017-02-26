@@ -24,13 +24,9 @@ class UserController < ApplicationController
       params[:genre_ids] = []
     end
 
-    @user_genres = []
-    for genre_id in params[:genre_ids]
-      @user_genres.push(user_genre)
-    end
-    print @user_genres.count
-
     if @user.valid?
+      @user_genres = []
+
       User.transaction do
         @user.save!
         @user_genres = []
@@ -43,7 +39,6 @@ class UserController < ApplicationController
         end
       end
       redirect_to :action => "show", :id => @user.id
-
     else
       render :action => "new"
     end
