@@ -46,7 +46,7 @@ class UserController < ApplicationController
       end
     end
 
-    redirect_to :action => "complete"
+    redirect_to :action => "show", :id => @user.id
 
     rescue => e
       render :text => "エラー"
@@ -57,9 +57,9 @@ class UserController < ApplicationController
 
   end
 
-  # def show
-  #   print params
-  # end
+  def show
+    @user = User.find(params[:id])
+  end
 
   private def user_param
     params.require(:user).permit(:name, :profile, :prefecture_id, :gender)
