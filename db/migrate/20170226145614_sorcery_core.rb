@@ -8,7 +8,7 @@ class SorceryCore < ActiveRecord::Migration[5.0]
 
       t.timestamps                :null => false
     end
-    add_index :user_auths, :user_id
+    add_index :user_auths, :user_id, unique: true
     add_index :user_auths, :email, unique: true
   end
 end

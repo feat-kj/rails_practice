@@ -4,9 +4,8 @@ class ApplicationController < ActionController::Base
   # app/controllers/application_controller.rb
   before_action :require_login
 
-  # app/controllers/users_controller.rb
-  skip_before_action :require_login, only: [:index, :new, :create]
+  def not_authenticated
+    redirect_to login_path, alert: "Please login first"
+  end
 
-  # app/controllers/user_sessions_controller.rb
-  skip_before_action :require_login, except: [:destroy]
 end

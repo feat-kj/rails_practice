@@ -1,4 +1,7 @@
 class UserController < ApplicationController
+  # app/controllers/users_controller.rb
+  skip_before_action :require_login, only: [:new, :create]
+
   def new
     @user = User.new
     params[:genre_ids] = []
@@ -41,6 +44,8 @@ class UserController < ApplicationController
           @user_genres.push(user_genre)
         end
       end
+
+      @user_auth = login(@user_auth.email, params[:user_auth][:password])
       redirect_to :action => "show", :id => @user.id
     else
       render :action => "new"
@@ -49,7 +54,7 @@ class UserController < ApplicationController
 
 
   def complete
-
+    @user = User.find(params[:id])
   end
 
   def show

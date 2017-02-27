@@ -11,7 +11,7 @@
   <body>
     <div id="nav">
         <% if current_user %>
-          <%= link_to "Profile", user_show_path(current_user.id) %>
+          <%= link_to "Profile", user_show_path(current_user.user_id) %>
           <%= link_to "Logout", :logout, method: :post %>
         <% else %>
           <%= link_to "Register", user_new_path %>
