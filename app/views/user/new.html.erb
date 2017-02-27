@@ -3,7 +3,6 @@
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= @user.errors.count %>件のエラーがあります。</h2>
-
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -12,6 +11,20 @@
   </div>
 <% end %>
 <%= form_for @user, :url => {:action => :create} do |f| %>
+
+<div class="field">
+  <%= label :user_auth, :email %>
+  <%= text_field :user_auth, :email %>
+</div>
+<div class="field">
+   <%= label :user_auth, :password %><br />
+   <%= password_field :user_auth, :password %>
+</div>
+<div class="field">
+   <%= label :user_auth,:password_confirmation %><br />
+   <%= password_field :user_auth, :password_confirmation %>
+</div>
+
 <ul>
 <li><%= f.label :name %>：<%= f.text_field(:name) %> <%= @user.errors.full_messages_for(:name) %></li>
 <li><%= f.label :gender %>:男:<%= f.radio_button(:gender, 1) %>
@@ -28,11 +41,12 @@
     <% params[:genre_ids].each do |gid| %>
       <% if gid == g.id.to_s %>
         <% genre_checked = true %>
+        <% break %>
       <% end %>
     <% end %>
     <%= check_box_tag("genre_ids[]", g.id, genre_checked) %><%= g.name %>
   <% end %>
   <br/>
 <% end %>
-<%= f.submit "送信する", data: { disable_with: "送信中..." } %>
+<%= f.submit "送信する", data: { disable_with: "登録中..." } %>
 <% end %>

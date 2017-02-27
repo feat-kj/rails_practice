@@ -18,11 +18,14 @@ class UserController < ApplicationController
 
   def create
     @user = User.new(user_param)
+    @user_auth = UserAuth.new(user_auth_params)
     @prefectures = Prefecture.order(:sort)
     @categories  = Category.order(:sort)
     if params[:genre_ids].blank?
       params[:genre_ids] = []
     end
+
+    @user.user_auth = @user_auth
 
     if @user.valid?
       @user_genres = []
@@ -42,7 +45,6 @@ class UserController < ApplicationController
     else
       render :action => "new"
     end
-
   end
 
 
@@ -54,8 +56,13 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  private def user_param
-    params.require(:user).permit(:name, :profile, :prefecture_id, :gender)
-  end
+  private
+    def user_param
+      params.require(:user).permit(:name, :profile, :prefecture_id, :gender)
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def user_auth_params
+      params.require(:user_auth).permit(:email, :password, :password_confirmation)
+    end
 
 end

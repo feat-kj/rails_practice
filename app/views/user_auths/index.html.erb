@@ -16,8 +16,6 @@
     <% @user_auths.each do |user_auth| %>
       <tr>
         <td><%= user_auth.email %></td>
-        <td><%= user_auth.crypted_password %></td>
-        <td><%= user_auth.salt %></td>
         <td><%= link_to 'Show', user_auth %></td>
         <td><%= link_to 'Edit', edit_user_auth_path(user_auth) %></td>
         <td><%= link_to 'Destroy', user_auth, method: :delete, data: { confirm: 'Are you sure?' } %></td>

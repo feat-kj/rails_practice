@@ -17,6 +17,16 @@
   </div>
 
   <div class="field">
+     <%= f.label :password %><br />
+     <%= f.password_field :password %>
+  </div>
+  <div class="field">
+     <%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation %>
+  </div>
+
+<!--
+  <div class="field">
     <%= f.label :crypted_password %>
     <%= f.text_field :crypted_password %>
   </div>
@@ -25,7 +35,7 @@
     <%= f.label :salt %>
     <%= f.text_field :salt %>
   </div>
-
+ -->
   <div class="actions">
     <%= f.submit %>
   </div>

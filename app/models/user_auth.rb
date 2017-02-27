@@ -7,6 +7,6 @@ class UserAuth < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  #has_one :users
+  belongs_to :user
 
 end
