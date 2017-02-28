@@ -54,4 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # initial data insert
 gem 'seed-fu', '~> 2.3'
+# authority
 gem 'sorcery'
+# api
+gem 'faraday','~> 0.10.1'
