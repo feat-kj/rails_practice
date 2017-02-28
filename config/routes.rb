@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'spots/index'
+
+  get 'spots/list'
+
+  get 'spots/conditions'
+
+  get 'spots/show'
+
   root :to => 'users#index'
   resources :user_sessions
   resources :user_auths

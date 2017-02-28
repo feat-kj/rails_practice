@@ -58,3 +58,5 @@ gem 'seed-fu', '~> 2.3'
 gem 'sorcery'
 # api
 gem 'faraday','~> 0.10.1'
+gem 'faraday_middleware','~> 0.11.0.1'
+gem 'kaminari'
