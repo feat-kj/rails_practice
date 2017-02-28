@@ -16,13 +16,21 @@ class SpotsController < ApplicationController
       # req.params['count'] = true
     end
     results = JSON.parse(json_response.body)
-    puts results
-    @spots = results['tourspots']
+    # puts results
+    @spots = Kaminari.paginate_array(results['tourspots']).page(params[:page]).per(10)
+    # puts @spots
   end
 
   def conditions
+    
+
+
+
   end
 
   def show
+    @prefs = Prefecture.page params[:page]
+    puts @prefs
+
   end
 end
