@@ -62,3 +62,5 @@ gem 'faraday_middleware','~> 0.11.0.1'
 gem 'kaminari','~> 1.0.1'
 # bootstrap
 gem 'bootstrap-sass','~> 3.3.7'
+gem 'flat-ui-rails'
+gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'

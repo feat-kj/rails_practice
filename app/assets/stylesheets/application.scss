@@ -12,5 +12,7 @@
  *
  */
 @import "bootstrap-sprockets";
+@import 'flat-ui/variables';
 @import "bootstrap";
+@import 'flat-ui';
 $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
