@@ -1,0 +1,78 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @user, :url => {:action => :create} do |f| %>
+
+<%= f.label :name %>
+<div class="form-group has-feedback">
+  <%= f.text_field :name, class:"form-control", placeholder:"name" %>
+  <span class="form-control-feedback fui-check"></span>
+</div>
+
+<%= label :user_auth, :email %>
+<div class="form-group has-feedback">
+  <%= text_field :user_auth, :email, class:"form-control", placeholder:"email" %>
+  <span class="form-control-feedback fui-check"></span>
+</div>
+
+<label class="radio" for="radio1">
+    <%= f.radio_button :gender, 1, class: "custom-radio", id: "radio1" %>
+    <!-- <input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" class="custom-radio"> -->
+    <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+    男
+</label>
+<label class="radio" for="radio2">
+    <%= f.radio_button :gender, 2, class: "custom-radio", id: "radio2" %>
+    <!-- <input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" class="custom-radio"> -->
+    <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+    女
+</label>
+住所
+<%= f.collection_select :prefecture_id, @prefectures, :id, :name, {} ,{:class => "form-control select select-primary select-block mbl"}  %>
+プロフィール
+<div class="form-group">
+  <%= f.text_area :profile, :size => "10x10", class: "form-control", placeholder: "複数行に渡るテキストを入力できる。" %>
+</div>
+パスワード
+<div class="input-group">
+  <%= password_field :user_auth, :password, class:"form-control" %>
+  <!-- <span class="input-group-addon"><span class="fui-lock"></span></span> -->
+</div>
+パスワード確認
+<div class="input-group">
+  <%= password_field :user_auth, :password_confirmation, class:"form-control" %>
+  <!-- <span class="input-group-addon"><span class="fui-lock"></span></span> -->
+</div>
+<!--
+
+<div class="field">
+
+</div>
+<div class="field">
+   <%= label :user_auth,:password_confirmation %><br />
+   <%= password_field :user_auth, :password_confirmation %>
+</div> -->
+
+<% @categories.each do |c| %>
+  <%= c.name %> :----:
+  <% c.genres.each do |g| %>
+  <% genre_checked = false %>
+    <% params[:genre_ids].each do |gid| %>
+      <% if gid == g.id.to_s %>
+        <% genre_checked = true %>
+        <% break %>
+      <% end %>
+    <% end %>
+    <%= check_box_tag("genre_ids[]", g.id, genre_checked) %><%= g.name %>
+  <% end %>
+  <br/>
+<% end %>
+<%= submit_tag "送信する", class: "btn btn-primary btn-lg btn-block" %>
+<% end %>

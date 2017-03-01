@@ -1,52 +1,10 @@
-<h1>User#index</h1>
-<p>Find me in app/views/user/index.html.erb</p>
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @user.errors.count %>件のエラーがあります。</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1>User#index</h1>
+    <p>Find me in app/views/user/index.html.erb</p>
+
+    <%= render 'form' %>
   </div>
-<% end %>
-<%= form_for @user, :url => {:action => :create} do |f| %>
-
-<div class="field">
-  <%= label :user_auth, :email %>
-  <%= text_field :user_auth, :email %>
+  <div class="col-md-3"></div>
 </div>
-<div class="field">
-   <%= label :user_auth, :password %><br />
-   <%= password_field :user_auth, :password %>
-</div>
-<div class="field">
-   <%= label :user_auth,:password_confirmation %><br />
-   <%= password_field :user_auth, :password_confirmation %>
-</div>
-
-<ul>
-<li><%= f.label :name %>：<%= f.text_field(:name) %> <%= @user.errors.full_messages_for(:name) %></li>
-<li><%= f.label :gender %>:男:<%= f.radio_button(:gender, 1) %>
-        女:<%= f.radio_button(:gender, 2) %>
-</li>
-<li>住所:<%= f.collection_select(:prefecture_id, @prefectures, :id, :name) %></li>
-<li>プロフィール:<%= f.text_area(:profile, :size => "10x10") %></li>
-</ul>
-
-<% @categories.each do |c| %>
-  <%= c.name %> :----:
-  <% c.genres.each do |g| %>
-  <% genre_checked = false %>
-    <% params[:genre_ids].each do |gid| %>
-      <% if gid == g.id.to_s %>
-        <% genre_checked = true %>
-        <% break %>
-      <% end %>
-    <% end %>
-    <%= check_box_tag("genre_ids[]", g.id, genre_checked) %><%= g.name %>
-  <% end %>
-  <br/>
-<% end %>
-<%= f.submit "送信する", data: { disable_with: "登録中..." } %>
-<% end %>
