@@ -16,5 +16,13 @@ class Spot
     end
     results = JSON.parse(json_response.body)
     return results['tourspots']
+    # spots = []
+    # for num in 1..100 do
+    #   dummy = {}
+    #   dummy[:name] = "test"
+    #   spots.push(dummy)
+    # end
+    #
+    # return spots
   end
 end

@@ -1,13 +1,16 @@
 <%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %>
+<div class="login-form">
+  <div class="input-group">
+    <%= text_field_tag :email, "", class: "form-control", placeholder: "E-mail" %>
+    <span class="input-group-addon"><span class="fui-mail"></span></span>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+  <div />
+  <div class="input-group">
+    <%= password_field_tag :password, "", class: "form-control", placeholder: "password" %>
+    <span class="input-group-addon"><span class="fui-lock"></span></span>
   </div>
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Login", class: "btn btn-primary btn-lg btn-block" %>
   </div>
+</div>
 <% end %>
