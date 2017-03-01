@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  skip_before_action :require_login, only: [:index, :list, :conditions, :show]
+
   def index
   end
 
@@ -22,7 +24,7 @@ class SpotsController < ApplicationController
   end
 
   def conditions
-    
+
 
 
 
