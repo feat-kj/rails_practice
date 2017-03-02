@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170226145614) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["email"], name: "index_user_auths_on_email", unique: true
-    t.index ["user_id"], name: "index_user_auths_on_user_id"
+    t.index ["user_id"], name: "index_user_auths_on_user_id", unique: true
   end
 
   create_table "user_genres", force: :cascade do |t|

@@ -72,7 +72,6 @@ GEM
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.17)
-    flat-ui-rails (0.0.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.0)
@@ -225,7 +224,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   faraday (~> 0.10.1)
   faraday_middleware (~> 0.11.0.1)
-  flat-ui-rails
   flat-ui-sass!
   jbuilder (~> 2.5)
   jquery-rails

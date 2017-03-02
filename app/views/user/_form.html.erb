@@ -21,16 +21,13 @@
   <%= text_field :user_auth, :email, class:"form-control", placeholder:"email" %>
   <span class="form-control-feedback fui-check"></span>
 </div>
-
 <label class="radio" for="radio1">
-    <%= f.radio_button :gender, 1, class: "custom-radio", id: "radio1" %>
-    <!-- <input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" class="custom-radio"> -->
-    <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+    <%= f.radio_button :gender, 1, class: "custom-radio", id: "radio1", data: {toggle: 'radio'} %>
+   <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
     男
 </label>
 <label class="radio" for="radio2">
-    <%= f.radio_button :gender, 2, class: "custom-radio", id: "radio2" %>
-    <!-- <input type="radio" name="optionsRadios1" value="" id="radio2" data-toggle="radio" checked="checked" class="custom-radio"> -->
+    <%= f.radio_button :gender, 2, class: "custom-radio", id: "radio2", data: {toggle: 'radio'} %>
     <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
     女
 </label>
@@ -43,25 +40,20 @@
 パスワード
 <div class="input-group">
   <%= password_field :user_auth, :password, class:"form-control" %>
-  <!-- <span class="input-group-addon"><span class="fui-lock"></span></span> -->
+  <span class="input-group-addon"><span class="fui-lock"></span></span>
 </div>
+
 パスワード確認
 <div class="input-group">
   <%= password_field :user_auth, :password_confirmation, class:"form-control" %>
-  <!-- <span class="input-group-addon"><span class="fui-lock"></span></span> -->
+  <span class="input-group-addon"><span class="fui-lock"></span></span>
 </div>
-<!--
 
-<div class="field">
-
-</div>
-<div class="field">
-   <%= label :user_auth,:password_confirmation %><br />
-   <%= password_field :user_auth, :password_confirmation %>
-</div> -->
-
+<table>
 <% @categories.each do |c| %>
-  <%= c.name %> :----:
+  <tr>
+  <th><%= c.name %></th>
+  <td>
   <% c.genres.each do |g| %>
   <% genre_checked = false %>
     <% params[:genre_ids].each do |gid| %>
@@ -72,7 +64,9 @@
     <% end %>
     <%= check_box_tag("genre_ids[]", g.id, genre_checked) %><%= g.name %>
   <% end %>
-  <br/>
+</td>
+</tr>
 <% end %>
+</table>
 <%= submit_tag "送信する", class: "btn btn-primary btn-lg btn-block" %>
 <% end %>
