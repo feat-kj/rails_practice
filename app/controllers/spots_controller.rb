@@ -1,40 +1,52 @@
 class SpotsController < ApplicationController
-  skip_before_action :require_login, only: [:index, :list, :conditions, :show]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
   end
 
   def list
-   results = Spot.new.find_result
-    # puts results
-    @spots = Kaminari.paginate_array(results).page(params[:page]).per(12)
-    return @spots
-  end
+    user = User.find(current_user.user_id)
 
-  def conditions
-
-    if params.key?("spot_form")
-      puts "@@@@@@@@@@@@@@@@@@@@@@"
-      @spot_form = SpotForm.new(user_form_param)
-      puts
-    else
-      puts "======================"
-      @spot_form = SpotForm.new
-      @spot_form.genre_ids = ["1"]
-    end
-
-    puts @spot_form
-    # params[:genre_ids] = []
-    # if params.key?("genre_ids")
-    #   @genre_ids = [UserGenre.new]
-    #
-    #   print ""
-    #   else
-    #     @genre_ids = UserGenre.find_by(user_id: 1)
-    #
-    # end
+    # 検索条件
+    @spot_form = SpotForm.new
     @prefectures = Prefecture.order(:sort)
     @categories = Category.order(:sort)
+
+    if params.key?("spot_form")
+      @spot_form = SpotForm.new(spot_form_param)
+    else
+      @spot_form.prefecture_id = user.prefecture_id
+      @spot_form.genre_ids = []
+      user.genres.each do |g|
+        @spot_form.genre_ids.push(g.id.to_s)
+      end
+    end
+    # 一覧情報取得
+    spot = Spot.new
+    results = spot.find_result(@spot_form)
+    @spots = Kaminari.paginate_array(results).page(params[:page]).per(12)
+
+  end
+
+# place=
+
+  def conditions
+    # user = User.find(current_user.user_id)
+    #
+    # @spot_form = SpotForm.new
+    # @prefectures = Prefecture.order(:sort)
+    # @categories = Category.order(:sort)
+    #
+    # if params.key?("spot_form")
+    #   @spot_form = SpotForm.new(spot_form_param)
+    # else
+    #   @spot_form.prefecture_id = user.prefecture_id
+    #   @spot_form.genre_ids = []
+    #   user.genres.each do |g|
+    #     puts g.id
+    #     @spot_form.genre_ids.push(g.id.to_s)
+    #   end
+    # end
   end
 
   def show
@@ -44,7 +56,7 @@ class SpotsController < ApplicationController
   end
 
   private
-    def user_form_param
+    def spot_form_param
       params.require(:spot_form).permit(:prefecture_id, genre_ids:[])
     end
 

@@ -2,6 +2,10 @@
 <p>Find me in app/views/spots/list.html.erb</p>
 <%= stylesheet_link_tag 'spots', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+<button class="btn btn-primary" data-toggle="modal" data-target="#searchModal">
+  再検索
+</button>
+
 <div class="row">
   <% for model in @spots %>
   <!-- Card Projects -->
@@ -47,3 +51,10 @@
 </div>
 <%= paginate @spots %>
 <div class="pagination pagination-minimal">
+
+<!-- モーダル表示 -->
+<div id="searchModal" class="modal fade">
+  <div class="modal-dialog">
+    <%= render 'form' %>
+  </div>
+</div>

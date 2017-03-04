@@ -1,7 +1,7 @@
 class UserGenre < ApplicationRecord
 
-  belongs_to :users
+  belongs_to :user
 
-  belongs_to :genres
+  belongs_to :genre
 
 end
