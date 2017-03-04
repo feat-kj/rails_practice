@@ -13,9 +13,28 @@ class SpotsController < ApplicationController
 
   def conditions
 
+    if params.key?("spot_form")
+      puts "@@@@@@@@@@@@@@@@@@@@@@"
+      @spot_form = SpotForm.new(user_form_param)
+      puts
+    else
+      puts "======================"
+      @spot_form = SpotForm.new
+      @spot_form.genre_ids = ["1"]
+    end
 
-
-
+    puts @spot_form
+    # params[:genre_ids] = []
+    # if params.key?("genre_ids")
+    #   @genre_ids = [UserGenre.new]
+    #
+    #   print ""
+    #   else
+    #     @genre_ids = UserGenre.find_by(user_id: 1)
+    #
+    # end
+    @prefectures = Prefecture.order(:sort)
+    @categories = Category.order(:sort)
   end
 
   def show
@@ -23,4 +42,10 @@ class SpotsController < ApplicationController
     puts @prefs
 
   end
+
+  private
+    def user_form_param
+      params.require(:spot_form).permit(:prefecture_id, genre_ids:[])
+    end
+
 end

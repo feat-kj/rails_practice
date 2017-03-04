@@ -1,0 +1,33 @@
+<h1>エリア</h1>
+<%= form_for @spot_form, :url => {:action => :conditions}, :method => "get" do |f| %>
+<%= f.collection_select :prefecture_id, @prefectures, :id, :name, {} ,{:class => "form-control select select-primary select-block mbl"}  %>
+<h1>カテゴリ</h1>
+<table>
+<tbody>
+<% @categories.each do |c| %>
+  <tr>
+  <th><%= c.name %></th>
+  <td>
+    <ul class="list-inline">
+  <% c.genres.each do |g| %>
+  <li>
+  <% genre_checked = false %>
+    <% @spot_form.genre_ids.each do |gid| %>
+      <% if gid == g.id.to_s %>
+        <% genre_checked = true %>
+        <% break %>
+      <% end %>
+    <% end %>
+    <label class="checkbox" for="checkbox">
+      <%= f.check_box(:genre_ids, {multiple: true, checked: genre_checked, class: "custom-checkbox", data: {toggle: "checkbox"}}, g.id) %><%= g.name %>
+    </label>
+  </li>
+  <% end %>
+</ul>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%= submit_tag "検索する", class: "btn btn-primary btn-lg btn-block" %>
+<% end %>

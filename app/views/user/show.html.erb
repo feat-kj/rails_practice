@@ -1,8 +1,6 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1 class="peter-river"><%= @user.name %></h1>
 <ul>
-  <li>name: <%= @user.name %> </li>
   <li>都道府県: <%= @user.prefecture.name %> </li>
-  <li>性別: <%= @user.name %> </li>
+  <li>性別: <%= @user.gender %> </li>
   <li>プロフィール: <%= @user.profile %> </li>
 </ul>

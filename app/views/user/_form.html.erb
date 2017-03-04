@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" class="alert">
     <h2><%= @user.errors.count %>件のエラーがあります。</h2>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
@@ -21,16 +21,21 @@
   <%= text_field :user_auth, :email, class:"form-control", placeholder:"email" %>
   <span class="form-control-feedback fui-check"></span>
 </div>
-<label class="radio" for="radio1">
+
+<ul class="list-inline">
+<li><label class="radio" for="radio1">
     <%= f.radio_button :gender, 1, class: "custom-radio", id: "radio1", data: {toggle: 'radio'} %>
    <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
     男
-</label>
+</label></li>
+<li>
 <label class="radio" for="radio2">
     <%= f.radio_button :gender, 2, class: "custom-radio", id: "radio2", data: {toggle: 'radio'} %>
     <span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
     女
 </label>
+</li>
+</ul>
 住所
 <%= f.collection_select :prefecture_id, @prefectures, :id, :name, {} ,{:class => "form-control select select-primary select-block mbl"}  %>
 プロフィール
@@ -54,7 +59,9 @@
   <tr>
   <th><%= c.name %></th>
   <td>
+    <ul class="list-inline">
   <% c.genres.each do |g| %>
+  <li>
   <% genre_checked = false %>
     <% params[:genre_ids].each do |gid| %>
       <% if gid == g.id.to_s %>
@@ -62,8 +69,13 @@
         <% break %>
       <% end %>
     <% end %>
-    <%= check_box_tag("genre_ids[]", g.id, genre_checked) %><%= g.name %>
+    <label class="checkbox" for="checkbox">
+      <%= check_box_tag("genre_ids[]", g.id, genre_checked, :class => "custom-checkbox", :data => {:toggle => "checkbox"}) %><%= g.name %>
+    </label>
+  </li>
+
   <% end %>
+</ul>
 </td>
 </tr>
 <% end %>
