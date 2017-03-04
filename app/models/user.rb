@@ -10,9 +10,9 @@ class User < ApplicationRecord
 
   validates :name,:profile, :prefecture_id, :gender, presence: true
 
-  validate :valid_genres
+  # validate :valid_genres
 
-  def valid_genres
-    errors.add(:genres, "must selected genre") if genres.size > 1
-  end
+  # def valid_genres
+  #   errors.add(:genres, "must selected genre") if genres.size > 1
+  # end
 end

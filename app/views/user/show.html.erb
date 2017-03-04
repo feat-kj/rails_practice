@@ -3,4 +3,5 @@
   <li>都道府県: <%= @user.prefecture.name %> </li>
   <li>性別: <%= @user.gender %> </li>
   <li>プロフィール: <%= @user.profile %> </li>
+  <%= link_to "Edit", user_edit_path, data: { no_turbolink: true }  %>
 </ul>

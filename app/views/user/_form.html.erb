@@ -8,7 +8,12 @@
     </ul>
   </div>
 <% end %>
-<%= form_for @user, :url => {:action => :create} do |f| %>
+
+<% action = :create %>
+<% if current_user %>
+  <% action = :update %>
+<% end %>
+<%= form_for @user, :url => {:action => action} do |f| %>
 
 <%= f.label :name %>
 <div class="form-group has-feedback">
@@ -18,7 +23,7 @@
 
 <%= label :user_auth, :email %>
 <div class="form-group has-feedback">
-  <%= text_field :user_auth, :email, class:"form-control", placeholder:"email" %>
+  <%= text_field :user_auth, :email, class:"form-control", placeholder: "email"  %>
   <span class="form-control-feedback fui-check"></span>
 </div>
 
@@ -73,12 +78,15 @@
       <%= check_box_tag("genre_ids[]", g.id, genre_checked, :class => "custom-checkbox", :data => {:toggle => "checkbox"}) %><%= g.name %>
     </label>
   </li>
-
   <% end %>
 </ul>
 </td>
 </tr>
 <% end %>
 </table>
-<%= submit_tag "送信する", class: "btn btn-primary btn-lg btn-block" %>
+<% if current_user %>
+  <%= submit_tag "更新する", class: "btn btn-primary btn-lg btn-block" %>
+<% else %>
+  <%= submit_tag "登録する", class: "btn btn-primary btn-lg btn-block" %>
+<% end %>
 <% end %>

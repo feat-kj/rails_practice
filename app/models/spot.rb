@@ -19,12 +19,12 @@ class Spot
       keyword << g.keyword << ";"
     end
     conn = Faraday.new(:url => url) do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.response :logger                  # log requests to STDOUT
+      faraday.request  :url_encoded
+      faraday.response :logger
       faraday.response :json, :content_type => /\bjson$/
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      faraday.adapter  Faraday.default_adapter
     end
-    json_response = conn.get do |req|                           # GET http://sushi.com/search?page=2&limit=100
+    json_response = conn.get do |req|
       req.url "/k-cloud-api/v001/kanko#{keyword}/json"
       req.params['limit'] = 50
       if spot_form.prefecture_id.present?
