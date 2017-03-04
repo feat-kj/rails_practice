@@ -47,17 +47,19 @@
 <div class="form-group">
   <%= f.text_area :profile, :size => "10x10", class: "form-control", placeholder: "複数行に渡るテキストを入力できる。" %>
 </div>
-パスワード
-<div class="input-group">
-  <%= password_field :user_auth, :password, class:"form-control" %>
-  <span class="input-group-addon"><span class="fui-lock"></span></span>
-</div>
+<% if !current_user %>
+  パスワード
+  <div class="input-group">
+    <%= password_field :user_auth, :password, class:"form-control" %>
+    <span class="input-group-addon"><span class="fui-lock"></span></span>
+  </div>
 
-パスワード確認
-<div class="input-group">
-  <%= password_field :user_auth, :password_confirmation, class:"form-control" %>
-  <span class="input-group-addon"><span class="fui-lock"></span></span>
-</div>
+  パスワード確認
+  <div class="input-group">
+    <%= password_field :user_auth, :password_confirmation, class:"form-control" %>
+    <span class="input-group-addon"><span class="fui-lock"></span></span>
+  </div>
+<% end %>
 
 <table>
 <% @categories.each do |c| %>
