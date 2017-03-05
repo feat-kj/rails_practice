@@ -1,15 +1,13 @@
 .modal-content
-  .modal-header
-    button.close[type="button" data-dismiss="modal" aria-hidden="true"]
-      | ×
-    h4.modal-title
-      | タイトル
-  .modal-body
-    h1
-      | エリア
-    = form_for @spot_form, :url => {:action => :list}, :method => "get" do |f|
+  = form_for @spot_form, :url => {:action => :list}, :method => "get" do |f|
+    .modal-header
+      button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+        | ×
+    .modal-body
+      h2
+        | エリア
       = f.collection_select :prefecture_id, @prefectures, :id, :name, {} ,{:class => "form-control select select-primary select-block mbl"}
-      h1
+      h2
         | カテゴリ
       table
         tbody
@@ -29,7 +27,7 @@
                       label.checkbox[for="checkbox"]
                         = f.check_box(:genre_ids, {multiple: true, checked: genre_checked, class: "custom-checkbox", data: {toggle: "checkbox"}}, g.id)
                         = g.name
-  .modal-footer
-    button.btn.btn-default[type="button" data-dismiss="modal"]
-      | 閉じる
-    = submit_tag "検索する", name: nil, class: "btn btn-primary"
+    .modal-footer
+      button.btn.btn-default[type="button" data-dismiss="modal"]
+        | 閉じる
+      = submit_tag "検索する", name: nil, class: "btn btn-primary"

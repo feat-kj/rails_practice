@@ -1,6 +1,6 @@
 = stylesheet_link_tag 'spots', media: 'all', 'data-turbolinks-track': 'reload'
 button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
-  |  再検索 
+  |  再検索
 .row
   - for model in @spots
     .item
@@ -16,7 +16,7 @@ button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
             - picture = "https://www.chiikinogennki.soumu.go.jp/k-cloud-api/v001/kanko/view/" <<  model["mng"]["refbase"] <<  "/" <<  picture
           |  <img class="img-responsive" src="
           = picture
-          | "> 
+          | ">
           span.card-title
             = model["name"]["name1"]["written"]
         .card-content
@@ -37,6 +37,6 @@ button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
             | Link
 = paginate @spots
 .pagination.pagination-minimal
-  #searchModal.modal.fade
-    .modal-dialog
-      = render 'form'
+#searchModal.modal.fade
+  .modal-dialog
+    = render 'form'
