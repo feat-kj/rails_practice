@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'spots/index'
-
   get 'spots/list'
-
-  get 'spots/conditions'
-
-  get 'spots/show'
 
   root :to => 'users#index'
   resources :user_sessions
-  resources :user_auths
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
