@@ -9,6 +9,8 @@ class UserController < ApplicationController
   end
 
   def create
+    puts params
+    
     @user = User.new(user_params)
     @user_auth = UserAuth.new(user_auth_params)
     @user.user_auth = @user_auth

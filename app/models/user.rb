@@ -17,9 +17,4 @@ class User < ApplicationRecord
   validates :prefecture_id, inclusion: { in: 1..47 }
   validates :gender, inclusion: { in: 1..2 }
 
-  # validate :valid_genres
-
-  # def valid_genres
-  #   errors.add(:genres, "must selected genre") if genres.size > 1
-  # end
 end
