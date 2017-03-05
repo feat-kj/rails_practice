@@ -2,6 +2,7 @@ class UserController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :set_master
   before_action :set_user, only: [:show, :edit, :update, :complete]
+  before_action :bad_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -10,7 +11,7 @@ class UserController < ApplicationController
 
   def create
     puts params
-    
+
     @user = User.new(user_params)
     @user_auth = UserAuth.new(user_auth_params)
     @user.user_auth = @user_auth
@@ -97,5 +98,12 @@ class UserController < ApplicationController
     def user_auth_params
       params.require(:user_auth).permit(:email, :password, :password_confirmation)
     end
+
+    def bad_login
+      if current_user
+        logout
+      end
+    end
+
 
 end

@@ -21,3 +21,29 @@ $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
   margin-top: 100px;
   margin-bottom:  100px;
 }
+h1 {
+	padding: .25em 0 .5em .75em;
+	border-left: 10px solid #ccc;
+	border-bottom: 1px solid #ccc;
+  font-size: 1.5em;
+}
+h2 {
+	padding: .5em .75em;
+	background-color: #f6f6f6;
+  font-size: 1.2em;
+}
+table {
+  margin: 3px;
+}
+th {
+  padding: .5em .75em;
+	background-color: #34495E;
+  color: #ECF0F1;
+  border-bottom: solid 1px #fff;
+  font-size: .75em;
+}
+td {
+  padding: .5em .75em;
+	background-color: #fff;
+  border: solid 1px #ECF0F1;
+}

@@ -1,7 +1,13 @@
-<h1 class="peter-river"><%= @user.name %></h1>
-<ul>
-  <li>都道府県: <%= @user.prefecture.name %> </li>
-  <li>性別: <%= @user.gender %> </li>
-  <li>プロフィール: <%= @user.profile %> </li>
-  <%= link_to "Edit", user_edit_path, data: { no_turbolink: true }  %>
+<h1 class="peter-river">会員詳細</h1>
+<table>
+  <tbody>
+  <tr><th>名前</th><td><%= @user.name %> </td></tr>
+  <tr><th>都道府県</th><td><%= @user.prefecture.name %> </td></tr>
+  <tr><th>性別</th><td> <%= @user.gender %> </td></tr>
+  <tr><th>プロフィール</th><td><%= sanitize(simple_format(@user.profile), :tags => %w(p br)) %></td></tr>
+</tbody>
+</table>
+<ul class="list-inline">
+  <li><%= link_to "編集", user_edit_path, data: { no_turbolink: true }, class:"btn btn-embossed btn-info" %></li>
+  <li><%= link_to "イベント検索", spots_list_path, data: { no_turbolink: true }, class:"btn btn-embossed btn-primary" %></li>
 </ul>

@@ -1,53 +1,50 @@
-<h1>Spots#list</h1>
-<p>Find me in app/views/spots/list.html.erb</p>
 <%= stylesheet_link_tag 'spots', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 <button class="btn btn-primary" data-toggle="modal" data-target="#searchModal">
   再検索
 </button>
-
 <div class="row">
   <% for model in @spots %>
   <!-- Card Projects -->
-  <div class="col-md-4">
-      <div class="card">
-          <div class="card-image">
-            <% picture = "" %>
-            <% if model.key?("views") %>
-              <% model["views"].each do |v| %>
-                  <% picture = v["fid"] %>
-              <% end %>
+  <div class="item">
+    <div class="card">
+        <div class="card-image">
+          <% picture = "" %>
+          <% if model.key?("views") %>
+            <% model["views"].each do |v| %>
+                <% picture = v["fid"] %>
             <% end %>
-            <% if picture.blank? %>
-              <% picture = "http://placehold.jp/500x330.png?text=No Image" %>
-            <% else %>
-              <% picture = "https://www.chiikinogennki.soumu.go.jp/k-cloud-api/v001/kanko/view/" <<  model["mng"]["refbase"] <<  "/" <<  picture %>
-            <% end %>
+          <% end %>
+          <% if picture.blank? %>
+            <% picture = "http://placehold.jp/500x330.png?text=No Image" %>
+          <% else %>
+            <% picture = "https://www.chiikinogennki.soumu.go.jp/k-cloud-api/v001/kanko/view/" <<  model["mng"]["refbase"] <<  "/" <<  picture %>
+          <% end %>
 
-            <img class="img-responsive" src="<%= picture %>">
-              <span class="card-title"><%= model["name"]["name1"]["written"] %></span>
-          </div>
+          <img class="img-responsive" src="<%= picture %>">
+            <span class="card-title"><%= model["name"]["name1"]["written"] %></span>
+        </div>
 
-          <div class="card-content">
-              <p>
-                <% if model.key?("descs") %>
-                  <% model["descs"].each do |d| %>
-                    <%= d["body"].truncate(100) %>
-                  <% end  %>
+        <div class="card-content">
+            <p>
+              <% if model.key?("descs") %>
+                <% model["descs"].each do |d| %>
+                  <%= d["body"].truncate(100) %>
                 <% end  %>
-              </p>
-          </div>
+              <% end  %>
+            </p>
+        </div>
 
-          <div class="card-action">
-              <a href="#" target="new_blank">Link</a>
-              <a href="#" target="new_blank">Link</a>
-              <a href="#" target="new_blank">Link</a>
-              <a href="#" target="new_blank">Link</a>
-              <a href="#" target="new_blank">Link</a>
-          </div>
-      </div>
+        <div class="card-action">
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+            <a href="#" target="new_blank">Link</a>
+        </div>
+    </div>
   </div>
-  <% end %>
+<% end %>
 </div>
 <%= paginate @spots %>
 <div class="pagination pagination-minimal">
