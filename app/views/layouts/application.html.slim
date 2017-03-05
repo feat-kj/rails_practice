@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | RailsPractice
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    div
+      = render 'layouts/navigation'
+      .container
+        .contents
+          = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

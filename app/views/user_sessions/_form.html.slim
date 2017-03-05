@@ -1,0 +1,17 @@
+= stylesheet_link_tag 'user_sessions', media: 'all', 'data-turbolinks-track': 'reload'
+= form_tag user_sessions_path, :method => :post do
+  .login-box
+    ul
+      li
+        .input-group
+          = text_field_tag :email, "", class: "form-control", placeholder: "E-mail"
+          span.input-group-addon
+            span.fui-mail
+      li
+        .input-group
+          = password_field_tag :password, "", class: "form-control", placeholder: "password"
+          span.input-group-addon
+            span.fui-lock
+      li
+        .actions
+          = submit_tag "Login", class: "btn btn-primary btn-lg btn-block"

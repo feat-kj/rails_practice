@@ -1,0 +1,42 @@
+= stylesheet_link_tag 'spots', media: 'all', 'data-turbolinks-track': 'reload'
+button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
+  |  再検索 
+.row
+  - for model in @spots
+    .item
+      .card
+        .card-image
+          - picture = ""
+          - if model.key?("views")
+            - model["views"].each do |v|
+              - picture = v["fid"]
+          - if picture.blank?
+            - picture = "http://placehold.jp/500x330.png?text=No Image"
+          - else
+            - picture = "https://www.chiikinogennki.soumu.go.jp/k-cloud-api/v001/kanko/view/" <<  model["mng"]["refbase"] <<  "/" <<  picture
+          |  <img class="img-responsive" src="
+          = picture
+          | "> 
+          span.card-title
+            = model["name"]["name1"]["written"]
+        .card-content
+          p
+            - if model.key?("descs")
+              - model["descs"].each do |d|
+                = d["body"].truncate(100)
+        .card-action
+          a[href="#" target="new_blank"]
+            | Link
+          a[href="#" target="new_blank"]
+            | Link
+          a[href="#" target="new_blank"]
+            | Link
+          a[href="#" target="new_blank"]
+            | Link
+          a[href="#" target="new_blank"]
+            | Link
+= paginate @spots
+.pagination.pagination-minimal
+  #searchModal.modal.fade
+    .modal-dialog
+      = render 'form'

@@ -71,4 +71,3 @@ gem 'bootstrap-sass','~> 3.3.7'
 gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 # slim
 gem 'slim-rails'
-gem  'html2slim'

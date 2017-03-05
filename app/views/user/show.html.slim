@@ -1,0 +1,29 @@
+h1.peter-river
+  | 会員詳細
+table
+  tbody
+    tr
+      th
+        | 名前
+      td
+        = @user.name
+    tr
+      th
+        | 都道府県
+      td
+        = @user.prefecture.name
+    tr
+      th
+        | 性別
+      td
+        = @user.gender
+    tr
+      th
+        | プロフィール
+      td
+        = sanitize(simple_format(@user.profile), :tags => %w(p br))
+ul.list-inline
+  li
+    = link_to "編集", user_edit_path, data: { no_turbolink: true }, class:"btn btn-embossed btn-info"
+  li
+    = link_to "イベント検索", spots_list_path, data: { no_turbolink: true }, class:"btn btn-embossed btn-primary"

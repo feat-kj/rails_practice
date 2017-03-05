@@ -1,0 +1,21 @@
+nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
+  .navbar-header
+    button.navbar-toggle[type="button" data-toggle="collapse" data-target="#navbar-collapse-01"]
+      span.sr-only
+        | Toggle navigation
+    a.navbar-brand[href="#"]
+      | Rails Practice
+  #navbar-collapse-01.collapse.navbar-collapse
+    form.navbar-form.navbar-left[action="#" role="search"]
+
+    ul.nav.navbar-nav.navbar-right
+      - if current_user
+        li[style=""]
+          = link_to "Profile", user_show_path
+        li
+          = link_to "Logout", :logout, method: :post
+      - else
+        li
+          = link_to "Register", user_new_path, data: { no_turbolink: true }
+        li
+          = link_to "Login", :login
