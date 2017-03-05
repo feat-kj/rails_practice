@@ -1,23 +1,17 @@
 FactoryGirl.define do
   factory :user do
-    name "user man"
-    profile "user profile sample"
+    name "テストユーザー"
+    profile "テストサンプルプロフィール"
     prefecture_id 2
     gender 1
+    after(:build) do |user|
+      user.user_auth ||= FactoryGirl.build(:user_auth, user: user)
+    end
   end
 
-  factory :user_def, class: User do
-    name "user man"
-    profile "user profile sample"
-    prefecture_id 2
-    gender 1
+  factory :user_auth do
+    email "test@test.com"
+    password "passworD1234"
+    password_confirmation "passworD1234"
   end
-
-  factory :user_sample, class: User do
-    name "user man"
-    profile "user profile sample"
-    prefecture_id 2
-    gender 1
-  end
-
 end
