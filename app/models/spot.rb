@@ -6,13 +6,17 @@ class Spot
   validate :valid_genre_ids
 
   def valid_genre_ids
-    errors.add(:genre_ids, "must selected genre") if genre_ids.size > 1
+    errors.add(:genre_ids, "お気に入りを一つ選択してください") if genre_ids.size > 1
   end
 
   def find_result(spot_form = SpotForm.new)
+    # ToDo あとで設定ファイルに移動
     url = "https://www.chiikinogennki.soumu.go.jp"
 
     search_ids = spot_form.genre_ids.map{|s|Integer s}
+    if search_ids.size == 0
+      return []
+    end
     genres = Genre.where(id: search_ids)
     keyword = "/"
     genres.each do |g|

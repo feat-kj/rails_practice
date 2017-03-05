@@ -9,6 +9,11 @@ table
         = @user.name
     tr
       th
+        | メール
+      td
+        = @user.user_auth.email
+    tr
+      th
         | 都道府県
       td
         = @user.prefecture.name

@@ -11,7 +11,6 @@ class UserController < ApplicationController
 
   def create
     puts params
-
     @user = User.new(user_params)
     @user_auth = UserAuth.new(user_auth_params)
     @user.user_auth = @user_auth
@@ -32,6 +31,7 @@ class UserController < ApplicationController
       end
       @user_auth = login(@user_auth.email, params[:user_auth][:password])
       redirect_to :action => "show"
+      
     else
       if params[:genre_ids].blank?
         params[:genre_ids] = []
@@ -49,7 +49,7 @@ class UserController < ApplicationController
 
   def update
     User.transaction do
-      if @user.update(user_params) && @user_auth.update(user_auth_params)
+      if @user.update(user_params)
         UserGenre.where(user_id: @user.id).destroy_all
         if params[:genre_ids].present?
           @user_genres = []
@@ -71,6 +71,9 @@ class UserController < ApplicationController
     end
     current_user.email = @user_auth.email
     redirect_to :action => "show"
+
+    rescue => e
+      render :text => e.message
   end
 
   def complete

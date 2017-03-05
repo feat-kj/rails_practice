@@ -1,6 +1,8 @@
 = stylesheet_link_tag 'spots', media: 'all', 'data-turbolinks-track': 'reload'
 button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
   |  再検索
+- if @spots.blank?
+  | 検索結果がありませんでした。
 .row
   - for model in @spots
     .item

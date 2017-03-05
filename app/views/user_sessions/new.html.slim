@@ -3,5 +3,7 @@
   .col-md-6
     h1
       | login
+    - if flash[:alert]
+      == flash[:alert]
     = render 'form'
   .col-md-3

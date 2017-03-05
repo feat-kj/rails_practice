@@ -1,12 +1,10 @@
 - if @user.errors.any?
   #error_explanation.alert
-    h2
-      = @user.errors.count
-      | 件のエラーがあります。
     ul
       - @user.errors.full_messages.each do |msg|
         li
           = msg
+
 - action = :create
 - if current_user
   - action = :update
@@ -15,10 +13,12 @@
   .form-group.has-feedback
     = f.text_field :name, class:"form-control", placeholder:"name"
     span.form-control-feedback.fui-check
-  = label :user_auth, :email
-  .form-group.has-feedback
-    = text_field :user_auth, :email, class:"form-control", placeholder: "email"
-    span.form-control-feedback.fui-check
+  - if !current_user
+    = label :user_auth, :email
+      .form-group.has-feedback
+      = text_field :user_auth, :email, class:"form-control", placeholder: "email"
+        span.form-control-feedback.fui-check
+
   ul.list-inline
     li
       label.radio[for="radio1"]
@@ -26,26 +26,26 @@
         span.icons
           span.icon-unchecked
           span.icon-checked
-        |  男 
+        |  男
     li
       label.radio[for="radio2"]
         = f.radio_button :gender, 2, class: "custom-radio", id: "radio2", data: {toggle: 'radio'}
         span.icons
           span.icon-unchecked
           span.icon-checked
-        |  女 
-  |  住所 
+        |  女
+  |  住所
   = f.collection_select :prefecture_id, @prefectures, :id, :name, {} ,{:class => "form-control select select-primary select-block mbl"}
-  |  プロフィール 
+  |  プロフィール
   .form-group
     = f.text_area :profile, :size => "10x10", class: "form-control", placeholder: "複数行に渡るテキストを入力できる。"
   - if !current_user
-    |  パスワード 
+    |  パスワード (英字大文字小文字と数字を含んだ8桁以上を設定してください)
     .input-group
       = password_field :user_auth, :password, class:"form-control"
       span.input-group-addon
         span.fui-lock
-    |  パスワード確認 
+    |  パスワード確認
     .input-group
       = password_field :user_auth, :password_confirmation, class:"form-control"
       span.input-group-addon
