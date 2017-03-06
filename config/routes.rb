@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'spots/list'
 
-  root :to => 'users#index'
+  root :to => 'user_sessions#new'
   resources :user_sessions
 
   get 'login' => 'user_sessions#new', :as => :login

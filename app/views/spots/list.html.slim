@@ -27,16 +27,13 @@ button.btn.btn-primary[data-toggle="modal" data-target="#searchModal"]
               - model["descs"].each do |d|
                 = d["body"].truncate(100)
         .card-action
-          a[href="#" target="new_blank"]
-            | Link
-          a[href="#" target="new_blank"]
-            | Link
-          a[href="#" target="new_blank"]
-            | Link
-          a[href="#" target="new_blank"]
-            | Link
-          a[href="#" target="new_blank"]
-            | Link
+          - model["genres"].each do |g|
+            = g["L"]
+            | &nbsp;>&nbsp;
+            = g["M"]
+            | &nbsp;>&nbsp;
+            = g["S"]
+
 = paginate @spots
 .pagination.pagination-minimal
 #searchModal.modal.fade

@@ -65,7 +65,7 @@
                     - genre_checked = true
                     - break
                 label.checkbox[for="checkbox"]
-                  = check_box_tag("genre_ids[]", g.id, genre_checked, :class => "custom-checkbox", :data => {:toggle => "checkbox"})
+                  = check_box_tag("genre_ids[]", g.id, genre_checked, :data => {:toggle => "checkbox"})
                   = g.name
   - if current_user
     = submit_tag "更新する", class: "btn btn-primary btn-lg btn-block"

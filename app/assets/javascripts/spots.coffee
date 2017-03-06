@@ -5,4 +5,3 @@ $(document).ready ->
   $('.modal-toggle-link').click ->
     $('.modal-link').modal 'toggle'
     return
-  return
