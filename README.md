@@ -3,7 +3,7 @@
 会員登録を行い、検索を行ってください
 
 
-* Support version
+## Support version
 
 以下のバージョンで動作確認しています
 
@@ -13,13 +13,13 @@
 - sorcery 0.10.2
 - bootstrap 3
 
-* System dependencies
+## System dependencies
 
 - rbenvで管理する
 ```
 $ rbenv --global 2.3.0
 ```
-* Configuration
+## Configuration
 
 ```
 git clone git@github.com:feat-kj/rails_practice.git
@@ -29,17 +29,17 @@ git clone git@github.com:feat-kj/rails_practice.git
 ```
 $ bundle install --path vendor/bundle
 ```  
-* Database creation
+## Database creation
 
 ```  
 bundle exec rail db:migrate
 ```  
-* Database initialization
+## Database initialization
 
 ```
 bundle exec rails db:seed_fu
 ```
-* How to run
+## How to run
 
 - サーバー起動
 ```
@@ -50,4 +50,4 @@ bundle exec rails server
 http://localhost:3000/
 ```
 
-* ...
+## ...
