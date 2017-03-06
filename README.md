@@ -24,8 +24,7 @@ $ rbenv --global 2.3.0
 ```
 git clone git@github.com:feat-kj/rails_practice.git
 ```  
-- bundlerで管理するようにする。他の環境に影響を与えないように
-  project内に Rails をinstall
+- project内に gem をinstall
 ```
 $ bundle install --path vendor/bundle
 ```  
