@@ -32,7 +32,7 @@ $ bundle install --path vendor/bundle
 ## Database creation
 
 ```  
-bundle exec rail db:migrate
+bundle exec rails db:migrate
 ```  
 ## Database initialization
 
