@@ -1,12 +1,12 @@
 # README
+会員制の地域イベント検索サービスです。
+会員登録を行い、検索を行ってください
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
 
 * Support version
+
 以下のバージョンで動作確認しています
+
 - ruby 2.3.0
 - rails 5.0.1
 - slim 3.1.2
@@ -14,11 +14,13 @@ Things you may want to cover:
 - bootstrap 3
 
 * System dependencies
+
 - rbenvで管理する
 ```
 $ rbenv --global 2.3.0
 ```
 * Configuration
+
 ```
 git clone git@github.com:feat-kj/rails_practice.git
 ```  
@@ -28,14 +30,17 @@ git clone git@github.com:feat-kj/rails_practice.git
 $ bundle install --path vendor/bundle
 ```  
 * Database creation
+
 ```  
 bundle exec rail db:migrate
 ```  
 * Database initialization
+
 ```
 bundle exec rails db:seed_fu
 ```
 * How to run
+
 - サーバー起動
 ```
 bundle exec rails server
@@ -44,4 +49,5 @@ bundle exec rails server
 ```
 http://localhost:3000/
 ```
+
 * ...
